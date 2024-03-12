@@ -27,12 +27,42 @@ query getUserById{
     }
   }
 }
-  
+            ===========
+            query getUserById($userid:ID!){
+  user(id:$userid){
+    id
+    firstName
+    lastName
+    email
+    quotes{
+      name
+    }
+  }
+}
 
 =============================
 query getQuoteByUser {
   iqoute(by: "23158"){
     name
     by
+  }
+}
+
+             ===================
+            query getQuoteByUser ($quoteby:ID!) {
+            iqoute(by:$quoteby ){
+            name
+            by
+              }
+        }
+
+
+==========================
+mutation createUser($userNew:UserInput!) {
+  user:signupUser(userNew:$userNew){
+    id
+    email
+    firstName
+    lastName
   }
 }

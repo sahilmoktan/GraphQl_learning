@@ -17,3 +17,5 @@ fakedb.js created so we can play with graphql data
 Schema/decleration of type of Query is handled by resolver //extra details written on notebook
 
 In resolver, Query are handeling (type query of typeDefs) & User: part is resolving quote:[Quote] like populating in Mongogdb // extra on notebook
+
+seperation of reslover
