@@ -1,0 +1,8 @@
+getting srart with graphiQl npm inti --yes
+
+added type & index.js to server.js in package.json
+
+npm i 
+    - graphql@15.7.2    // using specific verson so no conflict between me & tutor
+    - apollo-server@3.5.0  // using apollo server
+    - apollo-server-core@3.5.0  // using for playground
