@@ -39,17 +39,23 @@ self task 1 update user
 self task 2 delete user
 
 summary:{{
-Schema works as end point directing toward operation
-    - here we need to declare operation type(query/mutation)
-    - type query for getting data for borwser/client
-    - mutation about to be fired, what to take inputs
+Schema collection of query/mutation types that directing toward operation
+    - this is the first point where client req is heared and directed towards ope
+    - here we need to declare operation type(query or mutation)
+    - type query requesting data & sub types deceration
+    - mutation requesting for post works also input deceration
 
 resolver works as controllers
     - here all the logics & main function are coded
     - operation directed form schema are handled here
-    - query part delivers get fnc works
+    - query part delivers get fnc works, getting data for borwser/client
     - mutation part does the create/ update/delete fnc
 
 models are common to react model system 
-    - declaration of fields
+    - declaration of fields for db collections
     }}
+
+
+now starting client site work 
+    same directory 
+    npx create-react-app client //for react
