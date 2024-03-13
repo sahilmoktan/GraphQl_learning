@@ -19,3 +19,11 @@ Schema/decleration of type of Query is handled by resolver //extra details writt
 In resolver, Query are handeling (type query of typeDefs) & User: part is resolving quote:[Quote] like populating in Mongogdb // extra on notebook
 
 seperation of reslover
+
+mongoos: Atlas cluster create 
+config ma connection string rakhnu
+
+npm i mongoose bcryptjs jsonwebtoken
+
+created models for user & quotes
+should import model and resolver after the connection of mongoose

@@ -17,7 +17,7 @@ mongoose.connection.on("error",()=>{
   console.log("error connecting", err)
 })
 
-
+//should import resolver after connection
 import "./models/Quotes.js"
 import "./models/User.js"
 import resolvers from "./resolvers.js";
