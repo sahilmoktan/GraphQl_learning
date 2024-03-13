@@ -59,3 +59,5 @@ models are common to react model system
 now starting client site work 
     same directory 
     npx create-react-app client //for react
+
+created basic ui for our project

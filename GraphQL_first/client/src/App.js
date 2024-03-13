@@ -1,20 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Profile from './components/Profile';
-import CreateQuote from './components/CreateQuote';
-import Home from './components/Home';
+import NavBar from './components/Navbar';
+import { routes } from './routes';
+import { useRoutes } from 'react-router-dom';
 
 
 function App() {
+  const element =useRoutes(routes)
   return (
     <div className="App">
-     {/* <Login/> */}
-     {/* <Signup/> */}
-     {/* <Profile/> */}
-     {/* <CreateQuote/> */}
-     <Home/>
+      <NavBar/>
+      {element}
+     
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Signup() {
+    const navigate = useNavigate()
     const [formData,setFormData] = useState({})
     
     const handleChange = (e)=>{
@@ -14,6 +16,7 @@ export default function Signup() {
     const handleSubmit = (e)=>{
         e.preventDefault()
         console.log(formData)
+        navigate("/")
     }
     return (
         <div className="container my-container">
@@ -48,6 +51,7 @@ export default function Signup() {
                  onChange={handleChange}
                  required
                  />
+                  <Link to="/login"><p>Already have account ?</p></Link>
                  <button className="btn #673ab7 deep-purple" type="submit">Signup</button>
             </form>
         </div>
