@@ -63,6 +63,12 @@ const resolvers = {
       const updatedUser = await User.findByIdAndUpdate(_id, input, { new: true });
       return updatedUser;
     },
+    deleteUser: async (_, { _id}) => {
+      //for deleting just taking _id 
+      //first check if _id exist 
+      if(!_id) throw new Error("this user not exist")
+      await User.findByIdAndDelete(_id)
+    }
    
   },
 };

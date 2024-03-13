@@ -40,6 +40,8 @@ const typeDefs = gql`
     signinUser(userSignin: UserSigninInput!): Token
     createQuote(name: String!): String
     updateUser(_id: ID!, input: UpdateUserInput!): User
+    deleteUser(_id: ID!): String
+    
   }
 
   input UserInput {
@@ -48,6 +50,7 @@ const typeDefs = gql`
     email: String!
     password: String!
   }
+
   input UserSigninInput {
     email: String!
     password: String!
@@ -58,6 +61,13 @@ const typeDefs = gql`
     lastName: String
     email: String
   }
+
+  input deleteUserInput {
+    _id:String!
+  }
+
 `;
+  
+  
 
 export default typeDefs;
