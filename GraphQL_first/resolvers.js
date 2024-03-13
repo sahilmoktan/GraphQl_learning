@@ -58,6 +58,11 @@ const resolvers = {
       await newQuote.save()
       return "Quote savedsuccessfully"
     },
+    updateUser: async (_, { _id, input }) => {
+      // to update the user in the database
+      const updatedUser = await User.findByIdAndUpdate(_id, input, { new: true });
+      return updatedUser;
+    },
    
   },
 };
