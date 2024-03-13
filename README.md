@@ -61,3 +61,13 @@ now starting client site work
     npx create-react-app client //for react
 
 created basic ui for our project
+npm i react-router-dom@6
+
+after react all pages setup
+
+npm i @apollo/client@3.9.6 graphql@15.7.2
+
+in index.js import apollo/client and wrap <App/> like porvider
+
+created queries.js in graphqlope folder and keep needed req commands
+imported that in Home.js
