@@ -13,10 +13,10 @@ const typeDefs = gql`
   }
   type User{
     _id:ID!
-    firstName:String
-    lastName:String
-    email:String
-    password:String
+    firstName:String!
+    lastName:String!
+    email:String!
+    password:String!
     quotes:[Quote]  
   }
   type Quote{
@@ -30,10 +30,11 @@ const typeDefs = gql`
   type Mutation {
     signupUser( userNew:UserInput!  ): User
     signinUser ( userSignin:UserSigninInput!):Token
+    createQuote(name:String!):String
   }
 
   input UserInput{
-    firstName:String!, lastName:String!, email:String!, password:String!
+    firstName:String! lastName:String! email:String! password:String!
   }
   input UserSigninInput{
     email:String!, password:String!
