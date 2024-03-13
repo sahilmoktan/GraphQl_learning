@@ -24,20 +24,23 @@ import "./models/User.js"
 import resolvers from "./resolvers.js";
 
 
+//seperation context
+const context=({req})=>{
+  //this function run always before req hit to resolver like middleware
+  //here token is compaired and matched to verify authenticated user
+  const {authorization} = req.headers
+  if (authorization){
+    const {userId} = jwt.verify(authorization,JWT_SECRET)
+    return {userId}
+  }
+}
+
 
 //apollo server
 const server = new ApolloServer({
   typeDefs, //key and value same huda key matra rakhda hunxa
   resolvers, // key & value same
-  context:({req})=>{
-    //this function run always before req hit to resolver like middleware
-    //here token is compaired and matched to verify authenticated user
-    const {authorization} = req.headers
-    if (authorization){
-      const {userId} = jwt.verify(authorization,JWT_SECRET)
-      return {userId}
-    }
-  },
+  context,
   plugins:[ApolloServerPluginLandingPageGraphQLPlayground()]
 });
 
