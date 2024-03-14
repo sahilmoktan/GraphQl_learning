@@ -39,7 +39,7 @@ self task 1 update user
 self task 2 delete user
 
 summary:{{
-Schema collection of query/mutation types that directing toward operation
+Schema collection of query/mutation types that directing toward operation (few like routing)
     - this is the first point where client req is heared and directed towards ope
     - here we need to declare operation type(query or mutation)
     - type query requesting data & sub types deceration
@@ -59,6 +59,7 @@ models are common to react model system
 now starting client site work 
     same directory 
     npx create-react-app client //for react
+    materialize cdn for quick css
 
 created basic ui for our project
 npm i react-router-dom@6

@@ -1,12 +1,22 @@
 import { useQuery } from '@apollo/client'
-import React from 'react'
+// import React, { useEffect, useState } from 'react'
 import { GET_ALL_QUOTES } from '../graphqlOpe/queries'
+
 
 export default function Home() {
     const { loading, error, data} = useQuery(GET_ALL_QUOTES)
-    console.log(data)
+        
+    // console.log(data)
 
-    if(loading) return <h1>Loading</h1>
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    // useEffect(() => {
+    //     const loggedIn = localStorage.getItem("isLoggedIn");
+    //     setIsLoggedIn(loggedIn);
+    // }, []);
+    
+
+   if(loading) return <h1>Loading</h1>
    if(error){
        console.log(error.message)
    }
@@ -15,6 +25,8 @@ export default function Home() {
    }
     return (
         <div className="container">
+            {/* {isLoggedIn && <h5>Welcome, User!</h5>} */}
+                       
            {
                 data.quotes.map(quote=>{
                     return(
