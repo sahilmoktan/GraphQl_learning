@@ -2,7 +2,6 @@ import { quotes, users } from "./fakedb.js";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "./config.js";
 
 const User = mongoose.model("User");
 const Quote = mongoose.model("Quote");
@@ -47,7 +46,7 @@ const resolvers = {
       if (!doMatch) {
         throw new Error("Invilad email or password");
       }
-      const token = jwt.sign({ userId: user._id }, JWT_SECRET);
+      const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
       return { token };
     },
     createQuote:async (_, { name }, { userId }) => {

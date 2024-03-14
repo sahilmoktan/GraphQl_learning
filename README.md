@@ -72,3 +72,25 @@ in index.js import apollo/client and wrap <App/> like porvider
 
 created queries.js in graphqlope folder and keep needed req commands
 imported that in Home.js
+
+
+summary of client site
+we have used react with apollo server
+all the structure are more like same(app.js, index.js components,) but the dfference is
+    - apollo client wraps whole app and provides cache storage feature
+    - create only routes.js insted of route folder and many painful route files ✌
+    - routes.js provides other components as element on very origanize way
+    - we create graphQloperation mutation.js and queries.js
+    - queries provides the get req works with their specific operation name
+    - mutation provides the create, reg, update ... operation work with name
+    - graphQl operation are imported in components(home) by useQuery
+    - useQuery provides specially { loading, error, data} main data in destructure way
+    - then our client component can access them
+
+
+added 404 page aswell
+
+new before  deployment
+npm dotenv
+replaced all config.js with .env 
+
