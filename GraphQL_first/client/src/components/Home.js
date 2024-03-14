@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { GET_ALL_QUOTES } from '../graphqlOpe/queries'
+import { Link } from 'react-router-dom'
 
 
 export default function Home() {
@@ -28,7 +29,10 @@ export default function Home() {
                         <h6>{quote.name}</h6>
                         {/* <p className="right-align">~{quote.by.firstName}</p> */}
                         {quote.by && quote.by.firstName && (
-            <p className="right-align">~{quote.by.firstName}</p>  // faced here error firstName not found, later found that i have deleted user so this loop couldn't find user's firstName, Now this code tackle error even if user is not avaliable quote is published 
+                            <Link to={`/profile/${quote.by._id}`}>
+            <p className="right-align">~{quote.by.firstName}</p>  
+                            </Link>
+            // faced here error firstName not found, later found that i have deleted user so this loop couldn't find user's firstName, Now this code tackle error even if user is not avaliable quote is published 
           )} 
                     </blockquote>
                     )
