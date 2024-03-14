@@ -1,19 +1,26 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_MY_PROFILE } from "../graphqlOpe/queries";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
+  const navigate  = useNavigate()
 const {loading,error,data}=useQuery(GET_MY_PROFILE)
 console.log(data)
+
+if(!localStorage.getItem("token")){
+  navigate("/login")
+  return <h1>unauthorized</h1>
+}
 
 if(loading)return <h2>profile loading</h2>
 
 if(error){
   console.log(error)
 }
- if (!data || !data.user) {
-    return <h2>No profile data available</h2>;
-  }
+//  if (!data || !data.user) {
+//     return <h2>No profile data available</h2>;
+//   } //this code fails apollo server's :you must login 
 
   return (
     <div className="container my-container">
@@ -27,7 +34,7 @@ if(error){
         <h5>{data.user.firstName} {data.user.lastname}</h5>
         <h6>Email - {data.user.email}</h6>
       </div>
-      <h3>Your quotes</h3>
+      <h3>Your Quotes</h3>
       {
         data.user.quotes.map(quo=>{
           return(

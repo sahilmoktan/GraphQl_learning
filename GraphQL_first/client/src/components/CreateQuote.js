@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useMutation } from '@apollo/client';
 import { CREATE_QUOTE } from '../graphqlOpe/mutations';
-import { GET_ALL_QUOTES } from '../graphqlOpe/queries';
+
 
 export default function CreateQuote() {
     const [quote,setQuote] = useState("")
@@ -9,8 +9,8 @@ export default function CreateQuote() {
     const [createQuote,{loading,error,data}] = useMutation(CREATE_QUOTE,{
         //allows us to refetch fresh data form database if there is createQuote, otherwide apollo fetch form cookies memory
         refetchQueries:[
-            GET_ALL_QUOTES,  // query call
-            'getAllQuotes'  // query operation
+            'getAllQuotes',  // query operation
+            'getMyProfile'
         ]
     })
 
