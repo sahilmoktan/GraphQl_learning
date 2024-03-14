@@ -94,3 +94,5 @@ new before  deployment
 npm dotenv
 replaced all config.js with .env 
 
+npm i apollo-server-express express
+replace apollo-server with apollo-server-express

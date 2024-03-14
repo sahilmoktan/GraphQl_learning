@@ -1,9 +1,20 @@
-import { ApolloServer, gql } from "apollo-server";
-import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
+import { ApolloServer } from "apollo-server-express";
+import { 
+  ApolloServerPluginLandingPageGraphQLPlayground, 
+  ApolloServerPluginDrainHttpServer,
+  ApolloServerPluginLandingPageDisabled } from "apollo-server-core";
 import typeDefs from "./SchemaGQl.js";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import dotenv from 'dotenv'
+import express from 'express';
+import http from 'http';
+import path from 'path';
+
+
+const port = process.env.PORT || 4000;
+const app = express();
+const httpServer = http.createServer(app);
 
 if(process.env.NODE_ENV !=="production"){
   dotenv.config()
@@ -45,10 +56,32 @@ const server = new ApolloServer({
   typeDefs, //key and value same huda key matra rakhda hunxa
   resolvers, // key & value same
   context,
-  plugins:[ApolloServerPluginLandingPageGraphQLPlayground()]
+  plugins:[
+    ApolloServerPluginDrainHttpServer({httpServer}),
+    process.env.NODE_ENV !=="production" ? 
+        ApolloServerPluginLandingPageGraphQLPlayground() :
+        ApolloServerPluginLandingPageDisabled()
+  ]
 });
 
-//port listning
-server.listen().then(({ url }) => {
-  console.log(`server ready at ${url}`);
+
+app.get('/',(req,res)=>{
+  res.send("graph boom!")
+})
+
+await server.start();
+server.applyMiddleware({
+     app,
+     path:'/graphql' 
 });
+
+
+
+httpServer.listen({port},()=>{
+  console.log(`Server ready at 4000 ${server.graphqlPath}`);
+})
+
+//port listning
+// server.listen().then(({ url }) => {
+//   console.log(`server ready at ${url}`);
+// });
