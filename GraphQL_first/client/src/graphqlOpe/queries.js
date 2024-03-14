@@ -10,3 +10,19 @@ query getAllQuotes{
     }
   }
 `
+
+export const GET_MY_PROFILE = gql`
+query getMyProfile{
+ user: myprofile{
+    firstName
+    lastName
+    email
+    quotes{
+      name
+    }
+  }
+}
+
+
+
+`

@@ -24,6 +24,12 @@ export default function CreateQuote() {
         })
     }
     if(loading) return <h1>Loading</h1>
+    if(error){
+        console.log(error.message)
+    }
+    if(data){
+        console.log(data)
+    }
     return (
         
         <div className="container my-container">
@@ -31,10 +37,10 @@ export default function CreateQuote() {
                 error && 
                 <div className="red card-panel">{error.message}</div>
             }
-            {/* {
+            {
                 data && 
                 <div className="green card-panel">{data.quote}</div>
-            } */}
+            }
             <form onSubmit={handleSubmit}>
                 <input 
                     type="text" 
@@ -48,3 +54,4 @@ export default function CreateQuote() {
         </div>
     )
 }
+
