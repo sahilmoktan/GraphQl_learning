@@ -15,10 +15,10 @@ const resolvers = {
     user: async (_, { _id }) => await User.findOne({_id}), //users.find((user) => user._id == _id),
     quotes: async () => Quote.find({}).populate("by","_id firstName"), // by lai _id ra name le fraction 
     iqoute: async (_, { by }) => await Quote.find({by}), //quotes.filter((quotes) => quotes.by == by),
-    myprofile: async(_,args,{userId})=>{
-      if(!userId) throw new Error("You must must be logged in")
+      myprofile: async(_,args,{userId})=>{
+      if(!userId) throw new Error("You must must be logged in") //this fnc works if we don't have data in local storge
       return await User.findOne({_id:userId})
-     }
+    }
   },
   User: {
     quotes: async (person) => await Quote.find({by:person._id}) //quotes.filter((quote) => quote.by == person._id), // type User vitra ko quotes:[Quote] lai mongoo ma populate gareko jastai gari resolve gardai xa

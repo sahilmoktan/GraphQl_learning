@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client'
 import React from 'react'
+import { useQuery } from '@apollo/client'
 import { GET_ALL_QUOTES } from '../graphqlOpe/queries'
 
 
@@ -11,6 +11,7 @@ export default function Home() {
    if(loading) return <h1>Loading</h1>
    if(error){
        console.log(error.message)
+       return <h2>Error: {error.message}</h2>;
    }
    if(data.quotes.length === 0){
     return  <h2>No Quotes available</h2>
@@ -21,13 +22,14 @@ export default function Home() {
                        
            {
                 data.quotes.map(quote=>{
+                    
                     return(
                    <blockquote key={quote._id}>
                         <h6>{quote.name}</h6>
-                        <p className="right-align">~{quote.by.firstName}</p>
-                        {/* {quote.by && quote.by.firstName && (
+                        {/* <p className="right-align">~{quote.by.firstName}</p> */}
+                        {quote.by && quote.by.firstName && (
             <p className="right-align">~{quote.by.firstName}</p>  // faced here error firstName not found, later found that i have deleted user so this loop couldn't find user's firstName, Now this code tackle error even if user is not avaliable quote is published 
-          )}  */}
+          )} 
                     </blockquote>
                     )
                 })

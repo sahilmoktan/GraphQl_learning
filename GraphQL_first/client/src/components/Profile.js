@@ -1,16 +1,19 @@
 import React from "react";
-import { GET_MY_PROFILE } from "../graphqlOpe/queries";
 import { useQuery } from "@apollo/client";
+import { GET_MY_PROFILE } from "../graphqlOpe/queries";
 
 export default function Profile() {
-  const {loading,error,data}=useQuery(GET_MY_PROFILE)
+const {loading,error,data}=useQuery(GET_MY_PROFILE)
+console.log(data)
 
-  if(loading)return <h2>profile loading</h2>
+if(loading)return <h2>profile loading</h2>
 
 if(error){
   console.log(error)
 }
-
+ if (!data || !data.user) {
+    return <h2>No profile data available</h2>;
+  }
 
   return (
     <div className="container my-container">
