@@ -5,7 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const navigate  = useNavigate()
-const {loading,error,data}=useQuery(GET_MY_PROFILE)
+const {loading,error,data}=useQuery(GET_MY_PROFILE,{
+  fetchPolicy:"cache-and-network"
+})
+
 console.log(data)
 
 if(!localStorage.getItem("token")){
